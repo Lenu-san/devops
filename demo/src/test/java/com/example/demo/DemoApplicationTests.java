@@ -3,7 +3,7 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DemoApplicationTests{
+public class CalculatorTest {
 
     static class Calculator {
 
