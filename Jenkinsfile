@@ -24,7 +24,7 @@
                     
                         sh "'${tool 'maven-3.5.2'}/bin/mvn' -B -DskipTests clean package"
                         
-                        // Génère le Javadoc
+                        
                         sh "'${tool 'maven-3.5.2'}/bin/mvn' javadoc:javadoc"
                     }
                 }
@@ -47,3 +47,7 @@
             }
         }
     }
+
+
+
+    
