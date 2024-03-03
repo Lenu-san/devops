@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DemoApplicationTests {
 
-   
     static class Calculatrice {
 
         public int add(int a, int b) {
