@@ -5,10 +5,9 @@
             pollSCM('*/3 * * * *') 
         }
 
-        tools {
-        
-            maven 'maven-3.23'
-        }
+      tools {
+        maven 'maven-3.5.2'
+    }
         
         stages {
             stage('Clone repo') {
