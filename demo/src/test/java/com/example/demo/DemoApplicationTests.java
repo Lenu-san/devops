@@ -4,40 +4,27 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DemoApplicationTests {
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-   
-    static class Calculatrice {
+public class CalculatorTest {
 
-        public int add(int a, int b) {
-            return a + b;
-        }
-
-        public int subtract(int a, int b) {
-            return a - b;
-        }
-
-        public int multiply(int a, int b) {
-            return a * b;
-        }
+    @Test
+    public void testAdd() {
+        Calculator calculator = new Calculator();
+        assertEquals(Integer.valueOf(5), calculator.add(2, 3));
     }
 
     @Test
-    public void testAddition() {
-        Calculatrice calculatrice = new Calculatrice();
-        assertThat(calculatrice.add(2, 3)).isEqualTo(5);
-    }
-    
-    @Test
-    public void testSubtraction() {
-        Calculatrice calculatrice = new Calculatrice();
-        assertThat(calculatrice.subtract(5, 3)).isEqualTo(2);
+    public void testMultiply() {
+        Calculator calculator = new Calculator();
+        assertEquals(Integer.valueOf(6), calculator.multiply(2, 3));
     }
 
-    
     @Test
-    public void testMultiplication() {
-        Calculatrice calculatrice = new Calculatrice();
-        assertThat(calculatrice.multiply(2, 3)).isEqualTo(6);
+    public void testDivide() {
+        Calculator calculator = new Calculator();
+        assertEquals(Integer.valueOf(2), calculator.divide(6, 3));
     }
 }
+
