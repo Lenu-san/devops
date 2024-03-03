@@ -1,63 +1,44 @@
-pipeline {
-    agent any
+package com.example.demo;
 
-    tools {
-        maven 'maven-3.5.2'
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@SuppressWarnings("unused")
+public class DemoApplicationTests {
+
+   
+    static class Calculatrice {
+
+        public int add(int a, int b) {
+            return a + b;
+        }
+
+        public int subtract(int a, int b) {
+            return a - b;
+        }
+
+        public int multiply(int a, int b) {
+            return a * b;
+        }
     }
 
-    stages {
-        stage('Clone repo') {
-            steps {
-                git branch: 'devops', url: 'https://github.com/SHODELACAILLE/Jenkins_Test.git'
-            }
-        }
+    @Test
+    public void testAddition() {
+        Calculatrice calculatrice = new Calculatrice();
+        assertThat(calculatrice.add(2, 3)).isEqualTo(5);
+    }
+    
+    @Test
+    public void testSubtraction() {
+        Calculatrice calculatrice = new Calculatrice();
+        assertThat(calculatrice.subtract(5, 3)).isEqualTo(2);
+    }
 
-        stage('Build and Test') {
-            steps {
-                dir('demo') {
-                    script {
-                        // Compilation
-                        sh "'${tool 'maven-3.5.2'}/bin/mvn' -B -DskipTests clean compile"
-                        // Tests JUnit
-                        sh "'${tool 'maven-3.5.2'}/bin/mvn' test"
-                    }
-                }
-            }
-        }
-
-        stage('Modify and Fail Test') {
-            steps {
-                script {
-                    // Modify a test to fail
-                    sh "echo \"assertNotEquals(Integer.valueOf(5), calculator.add(2, 3));\" >> demo/src/test/java/CalculatorTest.java"
-                    // Ensure compilation works
-                    sh "'${tool 'maven-3.5.2'}/bin/mvn' -B -DskipTests clean compile"
-                    // Run tests
-                    sh "'${tool 'maven-3.5.2'}/bin/mvn' test"
-                }
-            }
-        }
-
-        stage('Ignore Test') {
-            steps {
-                script {
-                    // Ignore a test
-                    sh "echo '@Ignore' >> demo/src/test/java/CalculatorTest.java"
-                    // Ensure compilation works
-                    sh "'${tool 'maven-3.5.2'}/bin/mvn' -B -DskipTests clean compile"
-                    // Run tests
-                    sh "'${tool 'maven-3.5.2'}/bin/mvn' test"
-                }
-            }
-        }
-
-        stage('Publish Test Report') {
-            steps {
-                script {
-                    // Assuming surefire-reports are generated
-                    junit '**/target/surefire-reports/*.xml'
-                }
-            }
-        }
+    
+    @Test
+    public void testMultiplication() {
+        Calculatrice calculatrice = new Calculatrice();
+        assertThat(calculatrice.multiply(2, 3)).isEqualTo(6);
     }
 }
