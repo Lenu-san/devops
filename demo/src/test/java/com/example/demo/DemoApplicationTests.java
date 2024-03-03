@@ -1,44 +1,31 @@
 package com.example.demo;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@SuppressWarnings("unused")
-public class DemoApplicationTests {
+import static org.junit.Assert.assertEquals;
 
-   
-    static class Calculatrice {
+@SpringBootTest
+public class test {
 
-        public int add(int a, int b) {
-            return a + b;
-        }
-
-        public int subtract(int a, int b) {
-            return a - b;
-        }
-
-        public int multiply(int a, int b) {
-            return a * b;
-        }
+    @Test
+    public void testAdd() {
+        calcule math = new calcule ();
+        int result = math.add(3, 4);
+        assertEquals(7, result);
     }
 
     @Test
-    public void testAddition() {
-        Calculatrice calculatrice = new Calculatrice();
-        assertThat(calculatrice.add(2, 3)).isEqualTo(5);
-    }
-    
-    @Test
-    public void testSubtraction() {
-        Calculatrice calculatrice = new Calculatrice();
-        assertThat(calculatrice.subtract(5, 3)).isEqualTo(2);
+    public void testMulti() {
+        calcule math = new calcule ();
+        int result = math.multi(3, 4);
+        assertEquals(12, result);
     }
 
-    
     @Test
-    public void testMultiplication() {
-        Calculatrice calculatrice = new Calculatrice();
-        assertThat(calculatrice.multiply(2, 3)).isEqualTo(6);
+    public void testDiv() {
+        calcule math = new calcule ();
+        int result = math.div(10, 2);
+        assertEquals(5, result);
     }
 }
