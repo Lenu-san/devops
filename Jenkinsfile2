@@ -42,7 +42,7 @@ pipeline {
             steps {
                 script {
                     // Ignore a test
-                    sh "echo '@Ignore' >> demo/src/test/java/com/example/demo/CalculatorTest.java"
+                    sh "echo '@Ignore' >> demo/src/test/java/com/example/demo/DemoApplicationTests.java"
                     // Ensure compilation works
                     sh "'${tool 'maven-3.5.2'}/bin/mvn' -B -DskipTests clean compile"
                     // Run tests
