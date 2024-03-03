@@ -7,7 +7,7 @@
 
         tools {
         
-            maven 'maven-3.5.2'
+            maven 'maven-3.23'
         }
         
         stages {
