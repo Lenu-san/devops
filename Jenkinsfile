@@ -13,7 +13,7 @@
             stage('Clone repo') {
                 steps {
                     
-                    git branch: 'devops', url: 'https://github.com/SHODELACAILLE/Jenkins_Test.git'
+                    git branch: 'devops', url: 'https://github.com/Lenu-san/devops.git'
                 }
             }
 
